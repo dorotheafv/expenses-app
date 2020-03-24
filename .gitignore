@@ -1,5 +1,9 @@
 node_modules/
 .vscode/
 public/scripts/*
+public/bundle.js
+public/bundle.js.map
+public/styles.css.map
+public/styles.css
 src/playground/*
 src/tests/add.test.js
