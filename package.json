@@ -6,10 +6,10 @@
   "scripts": {
     "server": "live-server public/",
     "buildwp": "webpack --watch",
-    "build": "webpack",
+    "build": "webpack --mode development",
     "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "dev-server": "webpack-dev-server",
-    "test": "jest config=jest.config.json" 
+    "test": "jest config=jest.config.json"
   },
   "dependencies": {
     "@babel/core": "^7.8.7",
@@ -19,7 +19,7 @@
     "@babel/preset-react": "^7.8.3",
     "babel-cli": "^6.26.0",
     "babel-core": "6.25.0",
-    "babel-loader": "^7.1.1",
+    "babel-loader": "^8.1.0",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "1.5.2",
