@@ -1,0 +1,5 @@
+node_modules/
+.vscode/
+public/scripts/*
+src/playground/*
+src/tests/add.test.js
