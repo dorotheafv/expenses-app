@@ -10,9 +10,8 @@ module.exports = (env) => {
     return {
         entry: './src/app', //application start point
         output: {
-            path: path.join(__dirname,'public','dist'),
-            filename: 'bundle.js',
-            publicPath: '/'
+            path: path.join(__dirname,'public', 'dist'),
+            filename: 'bundle.js'
         },
         module: { //loader
             rules: [{
