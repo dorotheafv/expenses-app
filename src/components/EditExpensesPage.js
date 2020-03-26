@@ -39,7 +39,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return { 
-        editExpense: (expense) => dispatch(editExpense(id, expense)),
+        editExpense: (id,expense) => dispatch(editExpense(id, expense)),
         addExpense: (expense) => dispatch(addExpense(expense)),
         removeExpense: (id) => dispatch(removeExpense( id ))
     };
