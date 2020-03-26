@@ -6,9 +6,7 @@ import { addExpense, removeExpense , editExpense} from '../actions/expenses';
 export class EditExpensesPage extends React.Component{
     onSubmit=(expense) => {
         if (expense && expense.id)
-           this.props.editExpense(expense);
-        else
-            this.props.addExpense(expense);
+        this.props.editExpense(this.props.expense.id, expense);
         this.props.history.push("/");
 
     };
