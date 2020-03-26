@@ -12,7 +12,7 @@ export default (expenses, { text, sortBy, startDate, endDate }) => {
     }).sort((a, b) => { //sorts by date descending
         if (sortBy === 'date') {
             return a.createdAt < b.createdAt ? 1 : -1;
-        } else if (sortBy === 'amount') {//soorts by amount descending
+        } else if (sortBy === 'amount') {//sorts by amount descending
             return a.amount < b.amount ? 1 : -1;
         }
     });
