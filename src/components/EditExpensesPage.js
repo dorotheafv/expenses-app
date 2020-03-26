@@ -21,9 +21,7 @@ export class EditExpensesPage extends React.Component{
             <ExpenseForm
                 expense={this.props.expense}
                 onSubmit={this.onSubmit} />
-            {(this.props.expense && this.props.expense.id) &&
                 <button onClick={this.onRemove}>Remove</button>
-            }
         </div>
         );
     };
@@ -40,7 +38,6 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch) => {
     return { 
         editExpense: (id,expense) => dispatch(editExpense(id, expense)),
-        addExpense: (expense) => dispatch(addExpense(expense)),
         removeExpense: (id) => dispatch(removeExpense( id ))
     };
 };
