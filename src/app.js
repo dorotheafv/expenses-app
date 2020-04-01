@@ -9,7 +9,6 @@ import { addExpense, removeExpense } from './actions/expenses';
 import { setEndDate, setTextFilter } from './actions/filters';
 import { Provider } from 'react-redux';
 import 'react-dates/lib/css/_datepicker.css';//css  for datepicker provided from the libary
-import  firebase from "./firebase/firebase";
 
 const store = configureStore();
 
