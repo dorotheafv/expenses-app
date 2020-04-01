@@ -5,3 +5,5 @@ src/playground/*
 src/tests/add.test.js
 /public/dist/*
 yarn-error.log
+.env.test
+.env.development
