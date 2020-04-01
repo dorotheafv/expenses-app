@@ -1,6 +1,9 @@
 //takes all named exports from firebase
 //and puts them on a variable called firebase
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
+
+import firebase from 'firebase/app';
+import 'firebase/database';
 import moment from 'moment';
 
 //Firebase configuration
