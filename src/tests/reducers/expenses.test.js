@@ -17,24 +17,40 @@ const action = [
         type: 'REMOVE_EXPENSE',
         id: "3"
     },
-    { type: 'EDIT_EXPENSE',
-      id: "3",
-      updates:{
-          note: 'note',
-          amount: 78
-      }
+    {
+        type: 'EDIT_EXPENSE',
+        id: "3",
+        updates: {
+            note: 'note',
+            amount: 78
+        }
     },
     {
         type: 'REMOVE_EXPENSE',
         id: "non_valid"
     },
-    { type: 'EDIT_EXPENSE',
-    id: "non_valid",
-    updates:{
-        note: 'note',
-        amount: 78
+    {
+        type: 'EDIT_EXPENSE',
+        id: "non_valid",
+        updates: {
+            note: 'note',
+            amount: 78
+        },
+    },
+    {
+        type: 'SET_EXPENSES',
+        expenses: [
+            {
+                id: "5",
+                description: "Book",
+                note: '',
+                amount: 295,
+                createdAt: moment(0).add(4, 'days').valueOf()
+            },
+            ...expenses
+        ]
     }
-  }
+    
 ];
 
 
@@ -47,7 +63,7 @@ test('should add expense', () => {
 
 test('should remove existing expense ', () => {
     const expensesList = expensesReducer(expenses, action[1]);
-    expect(expensesList).toEqual([expenses[0],expenses[1]]);
+    expect(expensesList).toEqual([expenses[0], expenses[1]]);
     expect(expensesList.length).toBe(2);
 
 });
@@ -69,5 +85,12 @@ test('should edit expense', () => {
 test('should not edit a non valid expense', () => {
     const expensesList = expensesReducer(expenses, action[4]);
     expect(expensesList).toEqual(expenses);
+
+});
+
+test('should set expenses', () => {
+    const expensesList = expensesReducer(expenses, action[5]);
+    expect(expensesList.length).toBe(4);
+    expect(expensesList).toEqual(action[5].expenses);
 
 });

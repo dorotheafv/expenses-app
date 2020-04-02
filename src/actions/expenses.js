@@ -40,16 +40,16 @@ export const startAddExpense = (expenseData = {}) => {
             amount = 0,
             createdAt = 0
         } = expenseData;
-        const expense = {description, note, amount, createdAt};
-    
-    return  database.ref('expenses')
-           .push(expense)
-            .then((ref)=> {
-            dispatch( addExpense({
-                id: ref.key,
-                ...expense
-            }));
-        });
+        const expense = { description, note, amount, createdAt };
+
+        return database.ref('expenses')
+            .push(expense)
+            .then((ref) => {
+                dispatch(addExpense({
+                    id: ref.key,
+                    ...expense
+                }));
+            });
     };
 };
 
@@ -66,4 +66,33 @@ export const editExpense = (id, updates) => ({
     updates
 });
 
+
+//SET EXPENSES
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+});
+
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        return database.ref('expenses')
+            .once('value') //returns a snapshot with the object structure
+            .then((snapshot) => {
+                const expenses = [];
+                console.log(snapshot.val()); 
+                snapshot.forEach((childSnapshot) => {
+
+                    expenses.push({
+                        //id contained in childsnaphot will be overwritten by id
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    });
+
+                });
+                dispatch(setExpenses(expenses));
+                console.log(expenses);
+
+            }).catch((e) => { });
+    };
+};
 
