@@ -1,17 +1,21 @@
 import React from 'react';
 import ExpenseForm from './ExpenseForm';
 import { connect } from 'react-redux'; 
-import { removeExpense , editExpense} from '../actions/expenses';
+import {startAddExpense, startRemoveExpense , startUpdateExpense} from '../actions/expenses';
 
 export class EditExpensesPage extends React.Component{
-    onSubmit=(expense) => {
-        this.props.editExpense(this.props.expense.id, expense);
+    onSubmit= (expense) => {
+        if(this.props.expense){
+            this.props.startUpdateExpense(this.props.expense.id, expense);
+        }else {
+            this.props.startAddExpense(expense);
+        }
         this.props.history.push("/");
 
     };
 
     onRemove = () => {
-        this.props.removeExpense({id:this.props.expense.id} );
+        this.props.startRemoveExpense({ id:this.props.expense.id} );
         this.props.history.push("/");
     };
 
@@ -21,7 +25,9 @@ export class EditExpensesPage extends React.Component{
             <ExpenseForm
                 expense={this.props.expense}
                 onSubmit={this.onSubmit} />
-                <button onClick={this.onRemove}>Remove</button>
+                { this.props.expense && 
+                    <button onClick={this.onRemove}>Remove</button>
+                }
         </div>
         );
     };
@@ -30,15 +36,16 @@ export class EditExpensesPage extends React.Component{
 const mapStateToProps = (state, props) => {
     return {
         expense: state.expenses.find((expense) => {
-            return expense.id === props.match.params.id
+            return expense.id === props.match.params.id;
         })
     };
 };
 
 const mapDispatchToProps = (dispatch,props) => {
     return { 
-        editExpense: (id,expense) => dispatch(editExpense(id, expense)),
-        removeExpense: (id) => dispatch(removeExpense( id ))
+        startAddExpense: (expense) => dispatch(startAddExpense(expense)),
+        startUpdateExpense: (id,expense) => dispatch(startUpdateExpense(id, expense)),
+        startRemoveExpense: (id) => dispatch(startRemoveExpense( id ))
     };
 };
 

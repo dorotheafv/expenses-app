@@ -49,15 +49,36 @@ export const startAddExpense = (expenseData = {}) => {
                     id: ref.key,
                     ...expense
                 }));
+            })
+            .catch( (e)=> {
+                console.log("Data not added due to: " + e);  
+
             });
     };
 };
 
-/** REMOVE EXPENSE ACTION */
+/** REMOVE EXPENSE ACTION*/
 export const removeExpense = ({ id = "" }) => ({
     type: 'REMOVE_EXPENSE',
     id: id
 });
+
+/** REMOVE EXPENSE FROM FIREBASE DATABASE*/
+export const startRemoveExpense = ({id}) => {
+    return (dispatch) => {
+        console.log("trying to remove" + id);
+        return database.ref(`expenses/${id}`).remove().then(() => {
+            console.log('Data is removed!');
+            dispatch(removeExpense({ id}));
+        }).catch((e) => {
+            console.log(`Data with id: ${id} not removed due to ${e}`);
+        });
+
+    };
+
+};
+
+
 
 /** EDIT EXPENSE ACTION */
 export const editExpense = (id, updates) => ({
@@ -66,6 +87,15 @@ export const editExpense = (id, updates) => ({
     updates
 });
 
+export const startUpdateExpense = (id, updates) =>{
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update(updates).then(()=>{
+            dispatch(editExpense(id, updates));
+        }).catch((e)=> {
+                console.log("Data not updated due to: " + e);      
+        });
+    };
+};
 
 //SET EXPENSES
 export const setExpenses = (expenses) => ({
@@ -92,7 +122,9 @@ export const startSetExpenses = () => {
                 dispatch(setExpenses(expenses));
                 console.log(expenses);
 
-            }).catch((e) => { });
+            }).catch((e) => {
+                    console.log("Data not set due to: " + e);      
+            
+            });
     };
 };
-
