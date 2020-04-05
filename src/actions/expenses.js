@@ -32,7 +32,8 @@ export const addExpense = (expense) => ({
 });
 
 export const startAddExpense = (expenseData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
         //set default value
         const {
             description = "",
@@ -42,7 +43,7 @@ export const startAddExpense = (expenseData = {}) => {
         } = expenseData;
         const expense = { description, note, amount, createdAt };
 
-        return database.ref('expenses')
+        return database.ref(`users/${uid}/expenses`)
             .push(expense)
             .then((ref) => {
                 dispatch(addExpense({
@@ -65,9 +66,10 @@ export const removeExpense = ({ id = "" }) => ({
 
 /** REMOVE EXPENSE FROM FIREBASE DATABASE*/
 export const startRemoveExpense = ({id}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
         console.log("trying to remove" + id);
-        return database.ref(`expenses/${id}`).remove().then(() => {
+        return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
             console.log('Data is removed!');
             dispatch(removeExpense({ id}));
         }).catch((e) => {
@@ -88,8 +90,9 @@ export const editExpense = (id, updates) => ({
 });
 
 export const startUpdateExpense = (id, updates) =>{
-    return (dispatch) => {
-        return database.ref(`expenses/${id}`).update(updates).then(()=>{
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expenses/${id}`).update(updates).then(()=>{
             dispatch(editExpense(id, updates));
         }).catch((e)=> {
                 console.log("Data not updated due to: " + e);      
@@ -104,8 +107,9 @@ export const setExpenses = (expenses) => ({
 });
 
 export const startSetExpenses = () => {
-    return (dispatch) => {
-        return database.ref('expenses')
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expenses`)
             .once('value') //returns a snapshot with the object structure
             .then((snapshot) => {
                 const expenses = [];

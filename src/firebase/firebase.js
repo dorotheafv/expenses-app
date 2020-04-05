@@ -4,6 +4,7 @@
 
 import firebase from 'firebase/app';
 import 'firebase/database';
+import 'firebase/auth';
 import moment from 'moment';
 
 //Firebase configuration
@@ -21,10 +22,13 @@ const firebaseConfig = {
 //Firebase Initialization
 firebase.initializeApp(firebaseConfig);
 
+
+
 //access firebase database
 const database = firebase.database();
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+export { firebase,googleAuthProvider, database as default };
 
-export { firebase, database as default };
 /** write to datatabase */
 //ref: references to a specific path for our database
 //if we don't pass any arg then we reference the root of the database,

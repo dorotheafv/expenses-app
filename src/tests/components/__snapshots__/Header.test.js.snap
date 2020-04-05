@@ -9,7 +9,7 @@ exports[`should render Header correctly with shallow 1`] = `
     <NavLink
       activeClassName="is-active"
       exact={true}
-      to="/"
+      to="/dashboard"
     >
       ExpensesDashboardPage
     </NavLink>
@@ -38,5 +38,10 @@ exports[`should render Header correctly with shallow 1`] = `
       Help
     </NavLink>
   </div>
+  <button
+    onClick={[MockFunction]}
+  >
+    Logout
+  </button>
 </header>
 `;
