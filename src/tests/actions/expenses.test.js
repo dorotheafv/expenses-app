@@ -161,7 +161,7 @@ test('should setup add expense action object with default values', (done) => {
             });
 
             //assert expense was saved to database
-            return database.ref(`users/${uid}/sexpenses/${actions[0].expense.id}`)
+            return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`)
                 .once('value');
 
         }).then((snapshot) => {
