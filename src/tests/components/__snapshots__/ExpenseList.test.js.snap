@@ -1,61 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ExpenseList correctly 1`] = `
-<div>
-  <h1>
-    Expense List
-  </h1>
-  <ol>
-    <li
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <ExpenseListItem
+      amount={195}
+      createdAt={0}
+      description="Gum"
+      id="1"
       key="1"
-    >
-       
-      <ExpenseListItem
-        amount={195}
-        createdAt={0}
-        description="Gum"
-        id="1"
-        note=""
-      />
-       
-    </li>
-    <li
+      note=""
+    />
+    <ExpenseListItem
+      amount={180}
+      createdAt={-345600000}
+      description="Rent"
+      id="2"
       key="2"
-    >
-       
-      <ExpenseListItem
-        amount={180}
-        createdAt={-345600000}
-        description="Rent"
-        id="2"
-        note=""
-      />
-       
-    </li>
-    <li
+      note=""
+    />
+    <ExpenseListItem
+      amount={295}
+      createdAt={345600000}
+      description="Car"
+      id="3"
       key="3"
-    >
-       
-      <ExpenseListItem
-        amount={295}
-        createdAt={345600000}
-        description="Car"
-        id="3"
-        note=""
-      />
-       
-    </li>
-  </ol>
+      note=""
+    />
+  </div>
 </div>
 `;
 
 exports[`should render ExpenseList correctly 2`] = `
-<div>
-  <h1>
-    Expense List
-  </h1>
-  <p>
-    No expenses
-  </p>
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item list-item--message"
+    >
+      <span>
+        No expenses
+      </span>
+    </div>
+  </div>
 </div>
 `;

@@ -1,0 +1,28 @@
+.btn {
+    background:$google-blue;
+    color: white;
+    display: inline-block;
+    font-size:$font-size-large;
+    line-height: 1;
+    padding: $s-size;
+    font-weight: 300;
+    border: none;
+    border-radius: 2px;
+    text-decoration: none;
+
+}
+
+//modifier --
+//use btn btn--link
+.btn--link {
+    background:none;
+}
+
+.btn--link__secondary {
+    background:#888;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+} 

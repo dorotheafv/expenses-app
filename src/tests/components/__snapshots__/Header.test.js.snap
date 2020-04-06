@@ -1,47 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render Header correctly with shallow 1`] = `
-<header>
-  <h1>
-    Expensify
-  </h1>
-  <div>
-    <NavLink
-      activeClassName="is-active"
-      exact={true}
-      to="/dashboard"
-    >
-      ExpensesDashboardPage
-    </NavLink>
-  </div>
-  <div>
-    <NavLink
-      activeClassName="is-active"
-      to="/create"
-    >
-      Add
-    </NavLink>
-  </div>
-  <div>
-    <NavLink
-      activeClassName="is-active"
-      to="/edit"
-    >
-      Edit
-    </NavLink>
-  </div>
-  <div>
-    <NavLink
-      activeClassName="is-active"
-      to="/help"
-    >
-      Help
-    </NavLink>
-  </div>
-  <button
-    onClick={[MockFunction]}
+<header
+  className="header"
+>
+  <div
+    className="content-container"
   >
-    Logout
-  </button>
+    <div
+      className="header__content"
+    >
+      <Link
+        className="header"
+        to="/dashboard"
+      >
+        <h1
+          className="header__title"
+        >
+          Expenses App
+        </h1>
+      </Link>
+      <button
+        className="btn btn--link"
+        onClick={[MockFunction]}
+      >
+        Logout
+      </button>
+    </div>
+  </div>
 </header>
 `;
